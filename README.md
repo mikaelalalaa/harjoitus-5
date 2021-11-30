@@ -5,7 +5,7 @@
 ## a) Watch it!
 
 
-![image](https://user-images.githubusercontent.com/93308960/144049006-cf6a2b46-c634-41df-bc70-4f04e8a873f9.png)
+![image](https://user-images.githubusercontent.com/93308960/144066164-1504faf5-8d5f-4b1f-a321-ef6f22bec405.png)
 
 
 
