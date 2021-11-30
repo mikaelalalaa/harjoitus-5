@@ -72,3 +72,13 @@ sshd:
 
 
 ## f) Mootorix
+
+
+![image](https://user-images.githubusercontent.com/93308960/144108114-b907900f-af08-4f55-a925-d733062b1c45.png)
+
+
+![image](https://user-images.githubusercontent.com/93308960/144110485-1d074e49-4e5a-4881-84f0-2127d6c24083.png)
+
+![image](https://user-images.githubusercontent.com/93308960/144113014-2fdb51d1-5dca-421d-9a91-552b4014ac51.png)
+
+
