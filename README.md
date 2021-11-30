@@ -4,7 +4,7 @@
 
 ## a) Watch it!
 
-Otin yhteyden master vagrant koneelleni. Tein hakemiston `srv/salt/sshd` sinne kopion sshd_config komennolla `sudo cp sshd_config srv/salt/sshd` tiedoston hakemistosta `etc/ssh`
+Otin yhteyden master vagrant koneelleni. Tein hakemiston `srv/salt/sshd` sinne kopion sshd_config tiedoston komennolla `sudo cp sshd_config srv/salt/sshd`  hakemistosta `etc/ssh`
 
 `srv/salt/sshd/` hakemistossa tein uuden tiedoston `init.sls` johon kirjoitin alla olevan tekstin.
 
@@ -62,8 +62,16 @@ yritin uudestaan ottaa yhteyttä orja koneeseen mutta herjasi samaa juttua
 
 Niiden jälkeen yritin kopioida avaimia toisin puolin komennolla `ssh-copy-id -i` no mutta eipähän onnistunu.
 
+Yritin myös ottaa yhteyttä akuperäsellä portilla 22 mutta ei sekään onnistunt. 
 ![image](https://user-images.githubusercontent.com/93308960/144126493-e3e08f08-431f-4241-9d27-f368f28aca4a.png)
 
+Päätin sitten näyttää toisella tavalla että voin muokata ssh konfiguraatio tiedostoa saltin avulla.
+
+Todistan sen virtuaali koneellani ottamalla puttyyn yhteyttä muokatulla 2222 portilla.
+
+Aloitin samanlailla luomalla hakemiston `srv/salt/sshd` sinne kopion sshd_config tiedoston komennolla `sudo cp sshd_config srv/salt/sshd`  hakemistosta `etc/ssh`.
+
+Hakemistoon `srv/salt/sshd` loin `init.sls` tiedoston ja lisäsin alla olevan tekstin.
 
 
 ```
@@ -83,12 +91,18 @@ sshd:
 
 ```
 
-![image](https://user-images.githubusercontent.com/93308960/144072969-2c7bf144-d69a-40d2-9cad-6a9de30e56f0.png)
+Ajoin komennon 
+
+```
+sudo salt '*' state.apply sshd
+```
 
 
+Kuten alla olevasta kuvasta *(oikea puoli)* näkyy ssh on asennettu jo aikasemmin ja portin vaihto onnistui. Avasin puttyn *(vasen puoli)* ja kirjoitin ip osoitteeni `Host Name` kohtaan ja portti oli 2222, sitten otetaa yhteyttä `open` kohdasta
 
 ![image](https://user-images.githubusercontent.com/93308960/144073441-0bfe2f2e-ffe4-4a68-b996-5d5df56c1c2f.png)
 
+Alhaasta olevasta kuvasta näkyy että yhetys oli onnistunut
 
 ![image](https://user-images.githubusercontent.com/93308960/144073635-e597f97c-6cf8-4106-a2a1-9f114399a5cd.png)
 
