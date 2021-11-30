@@ -226,12 +226,41 @@ Tällä kertaa kaikki meni onnistuneestin läpi kuten kuvassa näkyy.
 
 ![image](https://user-images.githubusercontent.com/93308960/144081510-5005c32d-dd2d-4f1c-ac52-9db8f766e8b3.png)
 
-Isolla näkyy luoma `index.html` sivu ja oikealla ikkunassa näkyy salt komennon tulokset
+Isolla näkyy selaimella luoma `index.html` sivu ja oikealla ikkunassa näkyy salt komennon tulokset
 
 
 ## d) Minä ja kissani
 
+Otin userdir käyttöön komennolla `sudo a2enmod userdir`, sitten ajoin aikajan komennon eli 
+
+```
+cd /etc/; sudo find -printf '%T+ %p\n'|sort|tail
+```
+Alla kuvassa näkyy kaksi vikaa riviä missä näkyy että muutokset tuli voimaan 
+
 ![image](https://user-images.githubusercontent.com/93308960/144083522-470ff1d4-72b5-4875-895f-f5657b3e340f.png)
+
+Sitten menin `srv/salt/sshd` hakemistoon ja muokkasin `init.sls` tiedostoa alla olevan kuvan mukaan.
+
+![image](https://user-images.githubusercontent.com/93308960/144137262-ad2e0279-39af-4394-92f6-909a418031ee.png)
+
+Lisäämällä kaksi riviä jottai voin luoda file.symlinkit
+
+```
+/etc/apache2/mods-enabled/userdir.conf:
+  file.symlink:
+    - target: /etc/apache2/mods-enable/userdir.conf
+
+/etc/apache2/mods-enabled/userdir.load:
+  file.symlink:
+    - target: /etc/apache2/mods-enabled/userdir.load
+ - watch:
+      - file: /etc/apache2/mods-enabled/userdir.conf
+      - file: /etc/apache2/mods-enabled/userdir.load
+
+```
+
+Ajoin komennon `sudo salt '*' state.apply apache2` ja kuten kuvassa näkyy muutokset onnistui 
 
 ![image](https://user-images.githubusercontent.com/93308960/144084883-2b3ae5f7-c81f-481f-b9bb-997fea502a1a.png)
 
@@ -239,6 +268,30 @@ Isolla näkyy luoma `index.html` sivu ja oikealla ikkunassa näkyy salt komennon
 
 ## e) Valmiiseen pöytään
 
+Loin hakemiston `srv/salt/copy`. Sen jälkeen menin hakemistoon `/etc/skel/` johon loin uuden kansion komennolla `sudo mkdir public_html` ja sinne tiedoston `index.html`.
+
+Tiedostoon laitoin alla olevan koodin
+
+![image](https://user-images.githubusercontent.com/93308960/144138182-c4c73031-f412-4e4f-8f55-0b24b21bc5ed.png)
+
+Tämän jälkeen kopioin `index.html` tiedoston `srv/salt/copy` hakemistoon. Komento oli `sudo cp index.html srv/salt/copy`. Siirryin myös `srv/salt/copy` hakemistton ja loin sinne `init.sls` tiedoston. 
+
+Kirjoitin alla olevan tekstin vasta luotuun tiedostoon.
+
+```
+/etc/skel/public_html/index.html:
+  file.managed:
+    - source: salt://copy/index.html
+    - makedirs: True
+```
+
+Sitten ajoin komennon
+
+```
+sudo salt-call --local state.apply copy
+```
+
+Muutokset onnistui
 
 ![image](https://user-images.githubusercontent.com/93308960/144094172-4d255822-e830-4251-b743-3d9996a928c2.png)
 
