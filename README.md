@@ -126,6 +126,7 @@ cat ssshd_config |grep -v ^#|grep -v ^$ > sudo tee sshd_config
 ```
 
 Alla olevasta kuvasta näkyy että onnistui
+
 ![image](https://user-images.githubusercontent.com/93308960/144133638-3410f9a4-a873-464a-ba0d-320f1b1e6382.png)
  
 
@@ -149,6 +150,7 @@ sudo salt '*' state.apply sshd
 ```
 
 Alla olevasta kuvasta näkyy että muutokset tuli voimaan.
+
 ![image](https://user-images.githubusercontent.com/93308960/144133978-e052b97e-6b7c-4d23-88af-8f3de37681a8.png)
 
 Tässä vielä näkyy että tervehdys tuli.
@@ -299,6 +301,7 @@ Testasin että onnistuko kunnolla, luomalla uuden käyttäjän komennolla `sudo 
 Sen jälkeen testasin tuliko  html tiedosto automaattisestin ja ajoin komennon `cat home/jay/public_html/index.html` 
 
 Kuvasta näkyy että onnistui.
+
 ![image](https://user-images.githubusercontent.com/93308960/144106823-aa87bbfa-9293-46b2-9efc-89a72c1898c0.png)
 
 
@@ -315,6 +318,7 @@ sudo apt install nginx
 ```
 
 Katsoin että Nginx on käynnissä komennolla `systemctl status nginx`
+
 ![image](https://user-images.githubusercontent.com/93308960/144108114-b907900f-af08-4f55-a925-d733062b1c45.png)
 
 Loin uuden hakemiston `srv/salt/nginx` johon loin `init.sls` ja `index.nginx-debian.html` tiedostot.
@@ -343,6 +347,7 @@ sudo salt '*' stata.apply nginx
 
 Alla olevasta kuvasta näkyy komennon tulokset *(oiken puolinen ikkuna)*, kaikki muutokset tuli onnistuneestin käyttön.
 Kuvasta näkyy nyös selaimen jossa testasin luomaani html tiedostoa.
+
 ![image](https://user-images.githubusercontent.com/93308960/144113014-2fdb51d1-5dca-421d-9a91-552b4014ac51.png)
 
 Kaikki toimi.
