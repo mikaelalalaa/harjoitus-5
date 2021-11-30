@@ -305,17 +305,52 @@ Kuvasta näkyy että onnistui.
 
 ## f) Mootorix
 
+Ensin asensin Nginx sovelluksen käsin komennoilla
 
+```
+sudo apt update
+&
+sudo apt install nginx
+
+```
+
+Katsoin että Nginx on käynnissä komennolla `systemctl status nginx`
 ![image](https://user-images.githubusercontent.com/93308960/144108114-b907900f-af08-4f55-a925-d733062b1c45.png)
 
+Loin uuden hakemiston `srv/salt/nginx` johon loin `init.sls` ja `index.nginx-debian.html` tiedostot.
 
-![image](https://user-images.githubusercontent.com/93308960/144110485-1d074e49-4e5a-4881-84f0-2127d6c24083.png)
+init tiedostoon laitoin alla olevan tekstin
 
+```
+
+nginx:
+  pkg.installed
+
+/var/www/html/index.nginx-debian.html:
+  file.managed:
+    - source: salt://nginx/index.nginx-debian.html
+```
+
+Alla olevasta kuvasta näkyy mitä kirjoitin html tiedostoon
+
+![image](https://user-images.githubusercontent.com/93308960/144139933-5de4c732-6593-4e9f-9ef5-d7171beba256.png)
+
+Sitten ajoin komennon 
+
+```
+sudo salt '*' stata.apply nginx
+```
+
+Alla olevasta kuvasta näkyy komennon tulokset *(oiken puolinen ikkuna)*, kaikki muutokset tuli onnistuneestin käyttön.
+Kuvasta näkyy nyös selaimen jossa testasin luomaani html tiedostoa.
 ![image](https://user-images.githubusercontent.com/93308960/144113014-2fdb51d1-5dca-421d-9a91-552b4014ac51.png)
 
+Kaikki toimi.
 
 
 ## lähteet
+
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04
 
 https://askubuntu.com/questions/311558/ssh-permission-denied-publickey
 
