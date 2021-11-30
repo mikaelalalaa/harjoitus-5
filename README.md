@@ -159,16 +159,74 @@ Tässä vielä näkyy että tervehdys tuli.
 
 ## c) Maailman suosituin
 
+Loin uuden hakemiston `srv/salt/apache2` johon loin `init.sls` tiedoston.
+
+Laitoin alla olevan tekstin tiedostoon
+
+```
+apache2:
+  pkg.installed
+
+newfile:
+  file.managed:
+    - source: salt://apache/index.html
+    - name: /var/www/html/index.html
+
+apacheservice:
+  service.running:
+    - name: apache2
+
+```
+
+Sitten loin `index.html` tiedoston johon laitoin alla olevan tekstin.
+
+![image](https://user-images.githubusercontent.com/93308960/144135896-25ef4db4-f5d5-42fd-bb59-ccec7d8fcfda.png)
+
+Ajoin komennon 
+
+```
+sudo salt-call --local state.apply apache2
+```
+
+Alla olevasta kuvasta näkyy että apache2 asetnui
 
 ![image](https://user-images.githubusercontent.com/93308960/144079416-f9b8f92e-81fd-4f88-bbb7-1ae4d8a7583f.png)
 
+Mutta file.amanged kohta ei mennyt läpi.
 
 ![image](https://user-images.githubusercontent.com/93308960/144079488-eb0d8ea6-09d9-47dc-9d7d-5e45ca455ef0.png)
 
 
+Kävin katsomassa `init.sls` tiedostoa ja huomasin että oli tullut kirjoitus virhe `newfile` kohtaan.
+
+Koodi muokattiin `source` kohdasta eli `salt://apache/index.html` --> `salt://apache2/index.html`, apache kohdasta oli jäänyt numero kakkonen.
+
+```
+apache2:
+  pkg.installed
+
+newfile:
+  file.managed:
+    - source: salt://apache2/index.html
+    - name: /var/www/html/index.html
+
+apacheservice:
+  service.running:
+    - name: apache2
+
+```
+
+Ajoin uudestaan komennon 
+
+```
+sudo salt-call --local state.apply apache2
+```
+
+Tällä kertaa kaikki meni onnistuneestin läpi kuten kuvassa näkyy.
 
 ![image](https://user-images.githubusercontent.com/93308960/144081510-5005c32d-dd2d-4f1c-ac52-9db8f766e8b3.png)
 
+Isolla näkyy luoma `index.html` sivu ja oikealla ikkunassa näkyy salt komennon tulokset
 
 
 ## d) Minä ja kissani
