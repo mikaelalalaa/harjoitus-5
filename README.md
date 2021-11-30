@@ -295,6 +295,10 @@ Muutokset onnistui
 
 ![image](https://user-images.githubusercontent.com/93308960/144094172-4d255822-e830-4251-b743-3d9996a928c2.png)
 
+Testasin että onnistuko kunnolla, luomalla uuden käyttäjän komennolla `sudo adduser jay`.
+Sen jälkeen testasin tuliko  html tiedosto automaattisestin ja ajoin komennon `cat home/jay/public_html/index.html` 
+
+Kuvasta näkyy että onnistui.
 ![image](https://user-images.githubusercontent.com/93308960/144106823-aa87bbfa-9293-46b2-9efc-89a72c1898c0.png)
 
 
@@ -310,3 +314,11 @@ Muutokset onnistui
 ![image](https://user-images.githubusercontent.com/93308960/144113014-2fdb51d1-5dca-421d-9a91-552b4014ac51.png)
 
 
+
+## lähteet
+
+https://askubuntu.com/questions/311558/ssh-permission-denied-publickey
+
+https://jhooq.com/vagrant-copy-public-key/
+
+https://terokarvinen.com/2021/configuration-management-systems-palvelinten-hallinta-ict4tn022-2021-autumn/#h5-demonit
