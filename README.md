@@ -30,11 +30,13 @@ Tämän jälkeen ajoin komennon, jossa samalla vaihoin portin numeroksi 2222
 ``
 sudo salt '*' state.apply sshd
 ``
-![image](https://user-images.githubusercontent.com/93308960/144125910-d1d0c9e3-5203-4fd9-9fe2-d39aa4071383.png)
+![image](https://user-images.githubusercontent.com/93308960/144127642-38d83c34-5162-4793-b361-105a0790fe9a.png)
 
 komento meni läpi ja muutokset pitäisi tulla voimaan.
 
-Yritin ottaa yhteyden orja koneeseni komennolla 
+Yritin ottaa yhteyden orja koneeseni komennolla `sudo ssh vagrant@iposoite`
+
+Mutta tämä ei onnistunut ja kysyttiin ssh julkista avainta
 
 ![image](https://user-images.githubusercontent.com/93308960/144120859-76905403-cc1e-479c-85e4-44773224605a.png)
 
