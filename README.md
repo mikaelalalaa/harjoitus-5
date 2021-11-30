@@ -1,6 +1,8 @@
 # harjoitus-5
 
+Tässä harjoituksessa käsiteltiin demoneita sshn kautta. Asennettii myös pari weppi ohjelmaa saltin avulla ja myös konffattiin ne saltin avulla ja infrakoodin avulla
 
+Tehtävät löytyvät [Tero Karvisen sivulta](https://terokarvinen.com/2021/configuration-management-systems-palvelinten-hallinta-ict4tn022-2021-autumn/#h5-demonit)
 
 ## a) Watch it!
 
