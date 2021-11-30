@@ -110,7 +110,7 @@ Alhaasta olevasta kuvasta näkyy että yhetys oli onnistunut
 
 ## b) Securerer shell
 
-Tämäkään ei onnistunut yritin siivota `sshd_config` tiedoston. 
+Siivosin `sshd_config` tiedoston. 
 Ensin komennolla 
 
 ```
@@ -142,9 +142,18 @@ banner:
 
 ```
 
+Tämä jälkeen ajoin komennon:
 
+```
+sudo salt '*' state.apply sshd
+```
 
+Alla olevasta kuvasta näkyy että muutokset tuli voimaan.
 ![image](https://user-images.githubusercontent.com/93308960/144133978-e052b97e-6b7c-4d23-88af-8f3de37681a8.png)
+
+Tässä vielä näkyy että tervehdys tuli.
+
+![image](https://user-images.githubusercontent.com/93308960/144134332-fe584973-29e6-4300-ba6e-27ee809444bd.png)
 
 
 
