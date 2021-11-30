@@ -4,6 +4,7 @@
 
 ## a) Watch it!
 
+![image](https://user-images.githubusercontent.com/93308960/144120859-76905403-cc1e-479c-85e4-44773224605a.png)
 
 
 
@@ -36,6 +37,8 @@ sshd:
 
 
 ## b) Securerer shell
+
+![image](https://user-images.githubusercontent.com/93308960/144125070-825245d1-c0f3-42e6-ac1d-72514dce8ba7.png)
 
 
 
