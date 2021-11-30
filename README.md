@@ -60,12 +60,12 @@ sshd:
 
 ![image](https://user-images.githubusercontent.com/93308960/144084883-2b3ae5f7-c81f-481f-b9bb-997fea502a1a.png)
 
-![image](https://user-images.githubusercontent.com/93308960/144094172-4d255822-e830-4251-b743-3d9996a928c2.png)
 
 
 ## e) Valmiiseen pöytään
 
 
+![image](https://user-images.githubusercontent.com/93308960/144094172-4d255822-e830-4251-b743-3d9996a928c2.png)
 
 
 ## f) Mootorix
