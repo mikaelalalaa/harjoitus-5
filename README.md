@@ -69,7 +69,7 @@ Päätin sitten näyttää toisella tavalla että voin muokata ssh konfiguraatio
 
 Todistan sen virtuaali koneellani ottamalla puttyyn yhteyttä muokatulla 2222 portilla.
 
-Aloitin samanlailla luomalla hakemiston `srv/salt/sshd` sinne kopion sshd_config tiedoston komennolla `sudo cp sshd_config srv/salt/sshd`  hakemistosta `etc/ssh`.
+Aloitin samanlailla luomalla hakemiston `srv/salt/sshd` sinne kopion `sshd_config` tiedoston komennolla `sudo cp sshd_config srv/salt/sshd`  hakemistosta `etc/ssh`.
 
 Hakemistoon `srv/salt/sshd` loin `init.sls` tiedoston ja lisäsin alla olevan tekstin.
 
@@ -110,8 +110,41 @@ Alhaasta olevasta kuvasta näkyy että yhetys oli onnistunut
 
 ## b) Securerer shell
 
-![image](https://user-images.githubusercontent.com/93308960/144125070-825245d1-c0f3-42e6-ac1d-72514dce8ba7.png)
+Tämäkään ei onnistunut yritin siivota `sshd_config` tiedoston. 
+Ensin komennolla 
 
+```
+cat sshd_config |grep -v ^#|grep -v ^$
+
+```
+
+Jotta näkee miltä siivous näyttäisi. Sitten yritän siirtää sitä uuteen tiedostoon komennolla 
+
+```
+cat ssshd_config |grep -v ^#|grep -v ^$ > sudo tee sshd_config
+
+```
+
+Alla olevasta kuvasta näkyy että onnistui
+![image](https://user-images.githubusercontent.com/93308960/144133638-3410f9a4-a873-464a-ba0d-320f1b1e6382.png)
+ 
+
+Loin hakemistoon `etc/ssh` banner.txt tiesoton ja kopion sen myös `srv/salt/sshd` hakemistoon.
+Jonka jälkeen muokkasin hakemistossa `srv/salt/sshd` olevaa `init.sls` tiedostoa ja lisäsin rivin 
+
+```
+
+banner:
+  file.managed:
+    - source: salt://sshd/banner.txt
+    - name: /etc/ssh/banner.txt
+
+
+```
+
+
+
+![image](https://user-images.githubusercontent.com/93308960/144133978-e052b97e-6b7c-4d23-88af-8f3de37681a8.png)
 
 
 
