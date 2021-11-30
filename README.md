@@ -56,6 +56,8 @@ sshd:
 
 ## d) Minä ja kissani
 
+![image](https://user-images.githubusercontent.com/93308960/144083522-470ff1d4-72b5-4875-895f-f5657b3e340f.png)
+
 
 
 ## e) Valmiiseen pöytään
