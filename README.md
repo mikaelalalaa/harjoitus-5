@@ -27,18 +27,40 @@ sshd:
 
 Tämän jälkeen ajoin komennon, jossa samalla vaihoin portin numeroksi 2222
 
-``
+```
 sudo salt '*' state.apply sshd
-``
+```
+
 ![image](https://user-images.githubusercontent.com/93308960/144127642-38d83c34-5162-4793-b361-105a0790fe9a.png)
 
 komento meni läpi ja muutokset pitäisi tulla voimaan.
 
 Yritin ottaa yhteyden orja koneeseni komennolla `sudo ssh vagrant@iposoite`
 
-Mutta tämä ei onnistunut ja kysyttiin ssh julkista avainta
+Mutta tämä ei onnistunut ja kysyttiin ssh julkista avainta.
 
 ![image](https://user-images.githubusercontent.com/93308960/144120859-76905403-cc1e-479c-85e4-44773224605a.png)
+
+Sitten alettiin googlailee ja katsomaan.
+
+Yritin eri komentoja kuten 
+
+```
+ssh-keygen
+&
+ssh-agent sh -c 'ssh-add; ssh-add -L'
+
+```
+
+Ensimmäisellä komennolla `ssh-keygen` yritin luoda ssh avainta no se kaipa onnistu 
+
+![image](https://user-images.githubusercontent.com/93308960/144128476-122d9d75-94a6-46bc-b34f-03030ae9fb7d.png)
+
+toinen komento `ssh-agent sh -c 'ssh-add; ssh-add -L'` näyttää ssh avaimen
+
+yritin uudestaan ottaa yhteyttä orja koneeseen mutta herjasi samaa juttua
+
+Niiden jälkeen yritin kopioida avaimia toisin puolin komennolla `ssh-copy-id -i` no mutta eipähän onnistunu.
 
 ![image](https://user-images.githubusercontent.com/93308960/144126493-e3e08f08-431f-4241-9d27-f368f28aca4a.png)
 
